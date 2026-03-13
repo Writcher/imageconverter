@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ImageConversionModule } from './image-conversion/image-conversion.module';
 import { BarcodeReaderModule } from './barcode-reader/barcode-reader.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Panel } from './barcode-reader/entities/paneles.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         username: configService.get('MSSQL_DB_USERNAME'),
         password: configService.get('MSSQL_DB_PASSWORD'),
         database: configService.get('MSSQL_DB_DATABASE'),
-        entities: [__dirname + '/modules/mssql/**/*.entity{.ts,.js}'],
+        entities: [Panel],
         synchronize: false,
         logging: false,
         options: {
