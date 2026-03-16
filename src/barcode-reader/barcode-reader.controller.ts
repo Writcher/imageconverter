@@ -1,6 +1,6 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { BarcodeReaderService } from './barcode-reader.service';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { ArrayNotEmpty, IsArray, IsNotEmpty, IsString } from 'class-validator';
 import { ApiKeyGuard } from 'src/auth/api-key.guard';
 
 export class PanelesEscaneados {
@@ -12,8 +12,9 @@ export class PanelesEscaneados {
   @IsString()
   tracker: string;
 
-  @IsNotEmpty()
-  @IsString()
+  @IsArray()
+  @ArrayNotEmpty() // ensures array is not empty
+  @IsString({ each: true })
   paneles: string[];
 };
 
