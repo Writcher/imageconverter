@@ -8,7 +8,7 @@ export class Panel {
     @Column()
     tracker: string;
 
-    @Column({ unique: true })
+    @Column()
     panel: string;
 
     @Column()
